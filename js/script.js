@@ -101,24 +101,27 @@ document.getElementById('save').addEventListener('click', function() {
 
     const remainingBalance = document.getElementById('remaining-balance');
 
-    remainingBalance.innerText = balancetext - savingAmountdivided;
+    const remainingCalc = balancetext - savingAmountdivided;
+
 
 
     if (saveValue < 0) {
         alert("Please enter a positive amount you want to save");
-    } else if (balancetext < savingAmountdivided) {
+    } else
+    if (balancetext < savingAmountdivided) {
         alert("You can't save more than you Earn");
     } else if (isNaN(balancetext) || isNaN(savingAmountdivided)) {
         alert("Please enter a valid amount");
     } else if (remainingBalance < 0) {
         alert("You don't have enougn balance to save");
+        remainingBalance.innerText = null;
     } else {
 
         const savingAmount = moneyInner('saving-amount')
         savingAmount.innerText = savingAmountdivided;
         const remainingBalance = document.getElementById('remaining-balance');
 
-        remainingBalance.innerText = balancetext - savingAmountdivided;
+        remainingBalance.innerText = remainingCalc;
     }
 
 
