@@ -34,10 +34,6 @@ function getExpenses() {
     return totalExpenses;
 }
 
-// function mainBalance() {
-//     subtraction('balance', getIncome(), getExpenses());
-
-// }
 document.getElementById('calculate').addEventListener('click', function() {
 
     // const amountText = document.getElementById('expenses')
@@ -56,10 +52,20 @@ document.getElementById('save').addEventListener('click', function() {
     const saveInput = document.getElementById('save-input').value;
     const saveValue = parseInt(saveInput);
 
+    const balance = document.getElementById('balance');
+    const balancetext = parseInt(balance.innerText);
 
     const savingAmount = moneyInner('saving-amount')
 
     const savingAmountdivided = (saveValue / 100) * getIncome();
-
     savingAmount.innerText = savingAmountdivided;
+
+    const remainingBalance = document.getElementById('remaining-balance');
+
+    remainingBalance.innerText = balancetext - savingAmountdivided;
+
+
+    const input = document.querySelectorAll('input');
+    input.value = '';
+
 });
