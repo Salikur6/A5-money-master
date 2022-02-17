@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,600&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+input[type="text"] {
+    background-color: #DCDCDC;
+    border: none;
+    padding: 12px 0 12px 18px;
+    margin-left: 20px;
+}
+
+input[type="text"].clothes {
+    margin-left: 0;
+}
