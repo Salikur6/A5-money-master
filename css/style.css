@@ -19,3 +19,11 @@ input[type="text"] {
 input[type="text"].clothes {
     margin-left: 0;
 }
+
+#valid-number {
+    display: none;
+}
+
+#valid-amount {
+    display: none;
+}

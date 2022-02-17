@@ -1,9 +1,17 @@
 // calculate  part ---------------------------------------
 
 function getIncome() {
+
     const incomeInput = document.getElementById('income');
     const incomeValue = incomeInput.value;
-    return incomeValue;
+
+    if (incomeValue < 0) {
+        alert('give a posative number')
+    } else {
+        return incomeValue;
+    }
+
+
 }
 
 function moneyInner(amountId) {
@@ -19,8 +27,12 @@ function moneyInputValue(inputId) {
 }
 
 function subtraction(amountText, first, secound) {
+
+
     const balancetext = document.getElementById(amountText);
     balancetext.innerText = first - secound;
+
+
 }
 
 //  adding total expenses values-----------------------------------
@@ -29,19 +41,46 @@ function getExpenses() {
     const rentValue = moneyInputValue('rent');
     const clothesValue = moneyInputValue('clothes');
 
-
     const totalExpenses = foodValue + rentValue + clothesValue;
-    return totalExpenses;
+
+    if (isNaN(foodValue) || isNaN(rentValue) || isNaN(clothesValue) || foodValue < 0 || rentValue < 0 || clothesValue < 0) {
+        alert("you have to put a valid number");
+        amountText.innerText = ''
+    }
+    if (foodValue < 0 || rentValue < 0 || clothesValue < 0) {
+        alert('put positive numbers')
+    } else {
+        return totalExpenses;
+    }
+
 }
 
 document.getElementById('calculate').addEventListener('click', function() {
 
-    // const amountText = document.getElementById('expenses')
-    const amountText = moneyInner('expenses')
-    amountText.innerText = getExpenses();
+    // if (getIncome() < getExpenses()) {
+    //     alert('your expenses is higher then your income');
+    // } else {
+    //     const amountText = moneyInner('expenses')
+    //     amountText.innerText = getExpenses();
 
-    subtraction('balance', getIncome(), getExpenses());
+    //     subtraction('balance', getIncome(), getExpenses());
+    // }
 
+
+    if (getIncome() <= 0 || isNaN(getIncome())) {
+        alert("Please enter a valid amount");
+    } else if (getIncome() < getExpenses()) {
+        alert("your expenses is higher then your income");
+    } else {
+        if (typeof getExpenses() !== "number") {} else {
+            //Updating total spending to the Total Spending Field
+            const amountText = moneyInner('expenses')
+            amountText.innerText = getExpenses();
+
+            //Updating New balance to the New Balance Field
+            subtraction('balance', getIncome(), getExpenses());
+        }
+    }
 
 })
 
@@ -55,17 +94,39 @@ document.getElementById('save').addEventListener('click', function() {
     const balance = document.getElementById('balance');
     const balancetext = parseInt(balance.innerText);
 
-    const savingAmount = moneyInner('saving-amount')
+
 
     const savingAmountdivided = (saveValue / 100) * getIncome();
-    savingAmount.innerText = savingAmountdivided;
+
 
     const remainingBalance = document.getElementById('remaining-balance');
 
     remainingBalance.innerText = balancetext - savingAmountdivided;
 
 
-    const input = document.querySelectorAll('input');
-    input.value = '';
+    if (saveValue < 0) {
+        alert("Please enter a positive amount you want to save");
+    } else if (balancetext < savingAmountdivided) {
+        alert("You can't save more than you Earn");
+    } else if (isNaN(balancetext) || isNaN(savingAmountdivided)) {
+        alert("Please enter a valid amount");
+    } else if (remainingBalance < 0) {
+        alert("You don't have enougn balance to save");
+    } else {
+
+        const savingAmount = moneyInner('saving-amount')
+        savingAmount.innerText = savingAmountdivided;
+        const remainingBalance = document.getElementById('remaining-balance');
+
+        remainingBalance.innerText = balancetext - savingAmountdivided;
+    }
+
+
+
+    const input = Array.from(document.querySelectorAll('input'));
+    input.forEach(e => {
+        e.value = '';
+    })
+
 
 });
