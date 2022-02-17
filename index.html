@@ -42,7 +42,7 @@
                     <h4 class="fw-bold mt-5 mb-4">Income</h4>
                     <div class="mb-4">
                         <h6 class="d-inline">Income:</h6>
-                        <input class="income" type="text"></div>
+                        <input id="income" class="income" type="text"></div>
 
 
                     <!-- expenses part ------------------------------------------ -->
@@ -53,18 +53,18 @@
                     <div class="row gy-3 mb-3">
                         <div class="col-lg-12">
                             <h6 class="d-inline">Food:</h6>
-                            <input type="text">
+                            <input id="food" type="text">
                         </div>
 
                         <div class="col-lg-12">
                             <h6 class="d-inline">Rent:</h6>
-                            <input type="text">
+                            <input id="rent" type="text">
                         </div>
 
 
                         <div class="col-lg-12">
                             <h6 class="d-inline">Clothes:</h6>
-                            <input class="clothes" type="text">
+                            <input id="clothes" class="clothes" type="text">
                         </div>
 
                     </div>
@@ -72,13 +72,13 @@
 
                     <!-- calculate button ---------------------------- -->
 
-                    <button class="btn btn-primary py-2 px-5 mb-4">Calculate</button>
+                    <button id="calculate" class="btn btn-primary py-2 px-5 mb-4">Calculate</button>
 
-                    <h4 class="fw-bold mb-4">Total Expenses: 5500</h4>
+                    <h4 class="fw-bold mb-4">Total Expenses: <span id="expenses">5500</span></h4>
 
-                    <h4 class="fw-bold mt-2 mb-5">Balance: 4500</h4>
+                    <h4 class="fw-bold mt-2 mb-5">Balance: <span id="balance">4500</span></h4>
 
-
+                    <!-- saving part ------------------------------------ -->
 
                     <div class="row mb-4">
                         <div class="col-lg-12">
@@ -93,17 +93,6 @@
             </div>
         </section>
     </main>
-
-    <footer>
-
-    </footer>
-
-
-
-
-
-
-
 
 
 
